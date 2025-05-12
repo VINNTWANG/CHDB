@@ -624,16 +624,13 @@ def plot_sankey_variant_type_to_phenotype(all_variants_df, top_n_phenotypes=DEFA
 # ────────────────────────── STREAMLIT APP LAYOUT & LOGIC ──────────────────────────
 # ... (之前的 import 和 CONFIGURATION 部分保持不变) ...
 # ... (所有 DATA PREPROCESSING 和 PLOTTING 函数保持不变) ...
-
-# ────────────────────────── STREAMLIT APP LAYOUT & LOGIC ──────────────────────────
-
 # --- Sidebar Setup ---
 st.sidebar.header("Gene Selection")
 selected_gene = st.sidebar.radio(
     "Select Gene:",
     ALL_GENES,
     index=ALL_GENES.index("CHD7") if "CHD7" in ALL_GENES else 0,
-    key="gene_selector_main" 
+    key="gene_selector_main"
 )
 
 # Filters directly under Gene Selection for the selected gene
@@ -649,18 +646,18 @@ if clinvar_load_errors:
 min_pos_slider = 0
 max_pos_slider = gene_length
 if max_pos_slider <= min_pos_slider:
-    max_pos_slider = min_pos_slider + 10 
+    max_pos_slider = min_pos_slider + 10
 default_slider_val = [min_pos_slider, max_pos_slider]
 slider_session_key = f'pos_slider_val_{selected_gene}'
 current_slider_val = st.session_state.get(slider_session_key, default_slider_val)
-if not (isinstance(current_slider_val, (list, tuple)) and len(current_slider_val) == 2 and 
+if not (isinstance(current_slider_val, (list, tuple)) and len(current_slider_val) == 2 and
         current_slider_val[0] <= current_slider_val[1] and
         current_slider_val[0] >= min_pos_slider and current_slider_val[1] <= max_pos_slider):
     current_slider_val = list(default_slider_val)
 pos_range_val = st.sidebar.slider(
-    f"Position Range ({selected_gene}):", 
-    min_pos_slider, max_pos_slider, 
-    tuple(current_slider_val), 1, 
+    f"Position Range ({selected_gene}):",
+    min_pos_slider, max_pos_slider,
+    tuple(current_slider_val), 1,
     key=f"pos_slider_widget_{selected_gene}"
 )
 st.session_state[slider_session_key] = list(pos_range_val)
@@ -669,8 +666,8 @@ sig_options = sorted(df_gene_variants['SignificanceClass'].dropna().unique(), ke
 default_sig = st.session_state.get(f'sel_sig_{selected_gene}', sig_options)
 default_sig = [s for s in default_sig if s in sig_options]
 selected_significance_filter = st.sidebar.multiselect(
-    f"Significance (Positional Plots):", 
-    sig_options, default_sig, 
+    f"Significance (Positional Plots):",
+    sig_options, default_sig,
     key=f"sig_multi_widget_{selected_gene}"
 )
 st.session_state[f'sel_sig_{selected_gene}'] = selected_significance_filter
@@ -679,35 +676,30 @@ type_options = sorted(df_gene_variants['StandardType'].dropna().unique()) if not
 default_type = st.session_state.get(f'sel_type_{selected_gene}', type_options)
 default_type = [t for t in default_type if t in type_options]
 selected_types_filter = st.sidebar.multiselect(
-    f"Variant Type (Positional Plots):", 
-    type_options, default_type, 
+    f"Variant Type (Positional Plots):",
+    type_options, default_type,
     key=f"type_multi_widget_{selected_gene}"
 )
 st.session_state[f'sel_type_{selected_gene}'] = selected_types_filter
 
 # --- Sidebar Footer Information (Consolidated) ---
 st.sidebar.markdown("---") # Separator before footer info
-
-# Developer Info
+# ... (Sidebar footer code remains the same) ...
 st.sidebar.markdown("""<div class="sidebar-footer">
 <b>Developed by:</b><br>
 Zihao Wang<br>
 <i>Lab Feng</i><br>
 IBS, Fudan University
 </div>""", unsafe_allow_html=True)
-
-# Data Sources
 st.sidebar.markdown("""<div class="sidebar-footer" style="margin-top:10px;">
 <b>Data Sources:</b><br>
 <a href="https://www.ncbi.nlm.nih.gov/clinvar/" target="_blank">NCBI ClinVar</a><br>
 <a href="https://www.uniprot.org/" target="_blank">UniProt</a><br>
 <a href="https://hpo.jax.org/" target="_blank">HPO</a>
 </div>""", unsafe_allow_html=True)
-
-# Contact and Version
 contact_email_sidebar = "soap@fastemail.io"
 current_date_sidebar = datetime.now().strftime("%Y.%m.%d")
-version_info_sidebar = f"Wangzihao_CHD_Explorer_{current_date_sidebar}_v2.8" # Incremented version
+version_info_sidebar = f"Wangzihao_CHD_Explorer_{current_date_sidebar}_v2.9" # Incremented version for search feature
 st.sidebar.markdown(f"""<div class="sidebar-footer" style="margin-top:10px;">
 <b>Contact:</b> <a href="mailto:{contact_email_sidebar}">{contact_email_sidebar}</a><br>
 <b>Last Updated:</b> {current_date_sidebar}<br>
@@ -726,78 +718,159 @@ main_tabs_list = ["Gene Explorer (ClinVar)", "CHD Family Comparison (ClinVar)", 
 main_tab1, main_tab2, main_tab3 = st.tabs(main_tabs_list)
 
 # --- Main Tab 1: Gene Explorer (ClinVar) ---
-with main_tab1: 
+with main_tab1:
     st.title(f"{selected_gene} ClinVar Variant Explorer")
-    if df_gene_variants.empty and not gene_domains : 
+    if df_gene_variants.empty and not gene_domains :
         st.warning(f"No ClinVar variant or domain data could be loaded for {selected_gene}.")
     else:
         # Prepare df_positions_filtered for positional plots using sidebar filters
         df_positions_filtered = df_gene_variants.dropna(subset=['Position']) if 'Position' in df_gene_variants.columns else pd.DataFrame()
         if not df_positions_filtered.empty:
-            df_positions_filtered = df_positions_filtered[(df_positions_filtered['Position'] >= pos_range_val[0]) & (df_positions_filtered['Position'] <= pos_range_val[1])]
+            # Make sure Position is numeric for filtering
+            df_positions_filtered['Position'] = pd.to_numeric(df_positions_filtered['Position'], errors='coerce')
+            df_positions_filtered = df_positions_filtered.dropna(subset=['Position'])
+            df_positions_filtered['Position'] = df_positions_filtered['Position'].astype(int)
+
+            df_positions_filtered = df_positions_filtered[
+                (df_positions_filtered['Position'] >= pos_range_val[0]) &
+                (df_positions_filtered['Position'] <= pos_range_val[1])
+            ]
             if selected_significance_filter:
                 df_positions_filtered = df_positions_filtered[df_positions_filtered['SignificanceClass'].isin(selected_significance_filter)]
             else: # If no significance selected for positional, show no positional variants
-                df_positions_filtered = pd.DataFrame(columns=df_positions_filtered.columns) 
-            
+                df_positions_filtered = pd.DataFrame(columns=df_positions_filtered.columns)
+
             if not df_positions_filtered.empty: # If still data after significance filter
                 if selected_types_filter:
                     df_positions_filtered = df_positions_filtered[df_positions_filtered['StandardType'].isin(selected_types_filter)]
                 else: # If no type selected for positional, show no positional variants
                     df_positions_filtered = pd.DataFrame(columns=df_positions_filtered.columns)
-        
+
         # Define tabs for Gene Explorer (ClinVar)
         ge_tab_pos, ge_tab_type_sig, ge_tab_pheno, ge_tab_origin = st.tabs([
-            f"Positional Plots ({len(df_positions_filtered):,} variants)", 
+            f"Positional Plots & Search ({len(df_positions_filtered):,} variants in plots)", # Updated tab title
             "Type & Significance",
             "ClinVar Phenotypes",
             "Variant Origin"
         ])
 
         with ge_tab_pos:
-            st.subheader(f"Positional Variant Plots for {selected_gene}")
-            if df_positions_filtered.empty: st.info(f"No variants with protein positions match current filters for {selected_gene}.")
+            st.subheader(f"Search Variant by Protein Position in {selected_gene}")
+
+            # Make sure the original df has numeric Position
+            if 'Position' in df_gene_variants.columns:
+                 df_gene_variants['Position'] = pd.to_numeric(df_gene_variants['Position'], errors='coerce')
+                 # Keep original df intact, but filter out NaNs for searching
+                 searchable_df = df_gene_variants.dropna(subset=['Position']).copy()
+                 searchable_df['Position'] = searchable_df['Position'].astype(int)
             else:
+                searchable_df = pd.DataFrame() # No position data to search
+
+            search_col1, search_col2 = st.columns([3, 1])
+            with search_col1:
+                search_pos = search_col1.number_input(
+                    "Enter exact protein position (aa):",
+                    min_value=1,
+                    max_value=gene_length if gene_length > 0 else 10000, # Use gene_length as max
+                    step=1,
+                    value=None, # Default to None, no value pre-filled
+                    placeholder="e.g., 123",
+                    key=f"search_pos_input_{selected_gene}",
+                    label_visibility="collapsed" # Hide label, use placeholder
+                )
+            with search_col2:
+                search_button = st.button(f"🔍 Search Position", key=f"search_pos_button_{selected_gene}", use_container_width=True)
+
+            # --- Display Search Results ---
+            if search_button and search_pos is not None:
+                st.markdown("---") # Separator
+                st.subheader(f"Search Results for Position {search_pos}")
+                if not searchable_df.empty:
+                    # Filter the *original* full gene df (before positional plot filters)
+                    results_df = searchable_df[searchable_df['Position'] == search_pos]
+
+                    if not results_df.empty:
+                        st.success(f"Found {len(results_df)} variant(s) at position {search_pos}:")
+                        for index, row in results_df.iterrows():
+                            # Nicer display using expander and markdown
+                            with st.expander(f"**{row.get('Name', 'N/A')}** (ClinVar ID: {row.get('VariationID', 'N/A')})"):
+                                st.markdown(f"""
+                                *   **Type:** {row.get('StandardType', 'N/A')}
+                                *   **Clinical Significance:** {row.get('SignificanceClass', 'N/A')}
+                                *   **Reported Origin:** {row.get('OriginSimple', 'N/A')}
+                                *   **Phenotypes (ClinVar):** {row.get('PhenotypeListClean', 'N/A')}
+                                """)
+                                # Add ClinVar link if VariationID exists
+                                if pd.notna(row.get('VariationID')):
+                                     st.link_button("View on ClinVar", f"https://www.ncbi.nlm.nih.gov/clinvar/variation/{row.get('VariationID')}/")
+                    else:
+                        st.info(f"No ClinVar variants found exactly at protein position {search_pos} for {selected_gene}.")
+                else:
+                     st.warning(f"No positional data available in the loaded ClinVar file for {selected_gene} to perform search.")
+                st.markdown("---") # Separator after results
+            elif search_button and search_pos is None:
+                 st.warning("Please enter a protein position to search.")
+
+            # --- Display Positional Plots ---
+            st.subheader(f"Positional Variant Plots for {selected_gene}")
+            st.markdown(f"_Displaying variants matching sidebar filters (Position Range, Significance, Type). Total matching: {len(df_positions_filtered)}._")
+
+            if df_positions_filtered.empty:
+                st.info(f"No variants with protein positions match current sidebar filters for {selected_gene}.")
+            else:
+                # Check if search results exist and if the searched position is within the current plot range
+                if search_button and search_pos is not None and not results_df.empty:
+                     if pos_range_val[0] <= search_pos <= pos_range_val[1]:
+                           st.markdown(f"_*Note: Variants found at searched position {search_pos} are highlighted or visible in the plots below if they match the selected filters._")
+                     else:
+                           st.markdown(f"_*Note: Searched position {search_pos} is outside the current plot range [{pos_range_val[0]}, {pos_range_val[1]}]._")
+
                 st.plotly_chart(create_interactive_lollipop(df_positions_filtered, gene_domains, gene_length, selected_gene), use_container_width=True)
                 st.plotly_chart(create_interactive_waterfall(df_positions_filtered, gene_domains, gene_length, selected_gene), use_container_width=True)
                 st.plotly_chart(create_interactive_density(df_positions_filtered, gene_domains, gene_length, selected_gene), use_container_width=True)
-        
+
+        # --- Other Gene Explorer Tabs (Type/Sig, Pheno, Origin) ---
         with ge_tab_type_sig:
+            # ... (content remains the same) ...
             st.subheader(f"Variant Type vs. Clinical Significance for {selected_gene} (All ClinVar Variants for this Gene)")
-            # Uses df_gene_variants (unfiltered by positional filters)
             st.plotly_chart(create_type_significance_stacked_bar(df_gene_variants, selected_gene), use_container_width=True)
-        
+
         with ge_tab_pheno:
+            # ... (content remains the same) ...
             st.subheader(f"ClinVar Phenotype Analysis for {selected_gene} (Top {TOP_N_PHENOTYPES_GENE_EXPLORER} Phenotypes, All ClinVar Variants for this Gene)")
             st.plotly_chart(create_phenotype_type_stacked_bar(df_gene_variants, selected_gene, normalize=False, top_n=TOP_N_PHENOTYPES_GENE_EXPLORER), use_container_width=True)
             st.markdown("---")
             st.plotly_chart(create_phenotype_type_stacked_bar(df_gene_variants, selected_gene, normalize=True, top_n=TOP_N_PHENOTYPES_GENE_EXPLORER), use_container_width=True)
-        
+
         with ge_tab_origin:
+            # ... (content remains the same) ...
             st.subheader(f"Variant Origin Distribution for {selected_gene} (All ClinVar Variants for this Gene)")
             st.plotly_chart(create_origin_pie_chart(df_gene_variants, selected_gene), use_container_width=True)
 
-        st.markdown("---"); 
+        # --- Gene Summary & External Links ---
+        st.markdown("---");
         st.markdown(f"Gene Length Used for Plotting {selected_gene}: **{gene_length} aa**. Domains: **{', '.join([d['name'] for d in gene_domains]) if gene_domains else 'N/A'}**.")
         st.markdown("---"); st.subheader(f"Explore {selected_gene} on External Resources")
+        # ... (external links remain the same) ...
         link_defs = [{"name": "PubMed", "url": f"https://pubmed.ncbi.nlm.nih.gov/?term={selected_gene}", "icon": "🔬"},{"name": "OMIM", "url": f"https://www.omim.org/search?index=entry&search={selected_gene}", "icon": "🧬"},{"name": "DECIPHER", "url": f"https://www.deciphergenomics.org/gene/{selected_gene}/overview/protein-genomic", "icon": "💡"},{"name": "gnomAD", "url": f"https://gnomad.broadinstitute.org/search/{selected_gene}", "icon": "📊"},{"name": "Protein Atlas", "url": f"https://www.proteinatlas.org/search/{selected_gene}", "icon": "🖼️"}]
-        cols = st.columns(len(link_defs)); 
+        cols = st.columns(len(link_defs));
         for i, link in enumerate(link_defs): cols[i].link_button(f"{link['icon']} {link['name']}", link['url'], use_container_width=True)
 
+
 # --- Main Tab 2: CHD Family Comparison (ClinVar) ---
-with main_tab2: 
-    # ... (Content of main_tab2 remains unchanged from your previous version) ...
+with main_tab2:
+    # ... (Content of main_tab2 remains unchanged) ...
     st.title("CHD Gene Family Comparison (ClinVar Data)")
     all_chd_variants_df, comparison_summary_df, all_genes_load_errors = load_all_chd_data_for_comparison()
     st.subheader("Basic Summary Statistics")
     if "UniProt ID" in comparison_summary_df.columns and "RefSeq NM" in comparison_summary_df.columns:
         summary_df_for_display = comparison_summary_df.copy()
         summary_df_for_display["UniProt Link"] = summary_df_for_display["UniProt ID"].apply(lambda x: f"https://www.uniprot.org/uniprotkb/{x}/entry" if x != "N/A" else "")
-        summary_df_for_display["RefSeq Link"] = summary_df_for_display["RefSeq NM"].apply(lambda x: f"https://www.ncbi.nlm.nih.gov/nuccore/{x}" if x != "N/A" else "") 
+        summary_df_for_display["RefSeq Link"] = summary_df_for_display["RefSeq NM"].apply(lambda x: f"https://www.ncbi.nlm.nih.gov/nuccore/{x}" if x != "N/A" else "")
         st.dataframe(summary_df_for_display, use_container_width=True, hide_index=True,column_config={"UniProt ID": st.column_config.TextColumn("UniProt ID"),"UniProt Link": st.column_config.LinkColumn("UniProt Link", display_text="🔗"),"RefSeq NM": st.column_config.TextColumn("RefSeq NM"),"RefSeq Link": st.column_config.LinkColumn("RefSeq Link", display_text="🔗")},column_order=["Gene", "UniProt ID", "UniProt Link", "RefSeq NM", "RefSeq Link", "Protein Length (aa)", "Total Variants", "Pathogenic/Likely Path. Variants", "Data Loading Status"])
     else: st.dataframe(comparison_summary_df, use_container_width=True, hide_index=True)
     if all_genes_load_errors:
-        st.subheader("Data Loading Issues:"); 
+        st.subheader("Data Loading Issues:");
         for gene, errors in all_genes_load_errors.items():
             with st.expander(f"Details for {gene}"):
                 for e in errors: st.warning(f"- {e}")
@@ -811,19 +884,19 @@ with main_tab2:
         fig_sig_dist = plot_significance_distribution_per_gene(all_chd_variants_df); st.plotly_chart(fig_sig_dist, use_container_width=True); st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("##### Pathogenic Variant Types Heatmap (Gene vs Type)")
         fig_patho_types_heatmap = plot_pathogenic_variant_types_heatmap(all_chd_variants_df); st.plotly_chart(fig_patho_types_heatmap, use_container_width=True); st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown(f"##### Overall Pathogenic ClinVar Phenotype Distribution (Top {top_n_pheno_slider_val})") 
+        st.markdown(f"##### Overall Pathogenic ClinVar Phenotype Distribution (Top {top_n_pheno_slider_val})")
         fig_overall_pheno_pie = plot_overall_pathogenic_phenotype_distribution(all_chd_variants_df, top_n=top_n_pheno_slider_val); st.plotly_chart(fig_overall_pheno_pie, use_container_width=True); st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("##### Pathogenic Variant Type Distribution per Gene (Stacked)")
         fig_patho_types_stacked = plot_pathogenic_variant_types_per_gene_stacked(all_chd_variants_df); st.plotly_chart(fig_patho_types_stacked, use_container_width=True); st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown(f"##### Heatmap of Pathogenic Variants (Gene vs Top {top_n_pheno_slider_val} ClinVar Phenotypes)") 
+        st.markdown(f"##### Heatmap of Pathogenic Variants (Gene vs Top {top_n_pheno_slider_val} ClinVar Phenotypes)")
         fig_gene_pheno_heatmap = plot_gene_phenotype_heatmap(all_chd_variants_df, top_n_phenotypes=top_n_pheno_slider_val)
         st.plotly_chart(fig_gene_pheno_heatmap, use_container_width=True)
         st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown(f"##### Bubble Chart of Pathogenic Variants (Gene vs Top {top_n_pheno_slider_val} ClinVar Phenotypes)") 
+        st.markdown(f"##### Bubble Chart of Pathogenic Variants (Gene vs Top {top_n_pheno_slider_val} ClinVar Phenotypes)")
         fig_bubble_gene_pheno = plot_pathogenic_bubble_chart_gene_phenotype(all_chd_variants_df, top_n_phenotypes=top_n_pheno_slider_val)
         st.plotly_chart(fig_bubble_gene_pheno, use_container_width=True)
         st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown(f"##### Sankey: Pathogenic Variant Types to Top {top_n_pheno_slider_val} ClinVar Phenotypes") 
+        st.markdown(f"##### Sankey: Pathogenic Variant Types to Top {top_n_pheno_slider_val} ClinVar Phenotypes")
         fig_sankey_type_pheno = plot_sankey_variant_type_to_phenotype(all_chd_variants_df, top_n_phenotypes=top_n_pheno_slider_val)
         st.plotly_chart(fig_sankey_type_pheno, use_container_width=True)
         st.markdown("<br>", unsafe_allow_html=True)
@@ -831,11 +904,12 @@ with main_tab2:
     st.markdown("---"); st.subheader("Further Comparison Ideas:")
     st.markdown("""*   **Comparative Domain Architecture Plot.**\n*   **Phenotype Similarity/Clustering.**\n*   **Variant Hotspot Comparison.**\n*   **Gene Expression Correlation (External Data).**\n*   **Temporal Analysis**.\n*   **Structural Variant Impact.**\n*   **Functional Impact Scores Comparison.**\n*   **Conservation Analysis.**""")
 
+
 # --- Main Tab 3: HPO Phenotype Explorer ---
-with main_tab3: 
-    # ... (Content of main_tab3 as before) ...
+with main_tab3:
+    # ... (Content of main_tab3 remains unchanged) ...
     st.title(f"{selected_gene} HPO Phenotype Explorer")
-    if df_hpo_phenotypes.empty and df_hpo_diseases.empty and hpo_load_error: 
+    if df_hpo_phenotypes.empty and df_hpo_diseases.empty and hpo_load_error:
          st.warning(hpo_load_error)
     elif df_hpo_phenotypes.empty and df_hpo_diseases.empty:
         st.warning(f"No HPO phenotype or disease data could be loaded or found for {selected_gene}. Please ensure '{selected_gene}_annotations.json' exists in '{HPO_FILE_DIR}'.")
@@ -873,5 +947,3 @@ with main_tab3:
             net_top_pheno = st.slider("Top N Phenotypes for Network:", 3, 15, 7, key="net_top_pheno")
             net_top_dis = st.slider("Top N Diseases for Network:", 1, 10, 3, key="net_top_dis")
             st.plotly_chart(plot_hpo_gene_phenotype_network_plotly(df_hpo_phenotypes, df_hpo_diseases, selected_gene, top_n_pheno=net_top_pheno, top_n_dis=net_top_dis), use_container_width=True)
-
-# Removed the main page footer HTML generation as it's now in the sidebar.
