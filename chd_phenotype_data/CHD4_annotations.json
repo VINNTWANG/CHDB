@@ -1,0 +1,172 @@
+{
+    "diseases": [
+        {
+            "id": "OMIM:617159",
+            "name": "Sifrim-Hitz-Weiss syndrome",
+            "mondoId": "MONDO:0014946",
+            "description": null
+        }
+    ],
+    "phenotypes": [
+        {
+            "id": "HP:0000582",
+            "name": "Upslanted palpebral fissure"
+        },
+        {
+            "id": "HP:0000508",
+            "name": "Ptosis"
+        },
+        {
+            "id": "HP:0000483",
+            "name": "Astigmatism"
+        },
+        {
+            "id": "HP:0001631",
+            "name": "Atrial septal defect"
+        },
+        {
+            "id": "HP:0001636",
+            "name": "Tetralogy of Fallot"
+        },
+        {
+            "id": "HP:0001629",
+            "name": "Ventricular septal defect"
+        },
+        {
+            "id": "HP:0001643",
+            "name": "Patent ductus arteriosus"
+        },
+        {
+            "id": "HP:0000316",
+            "name": "Hypertelorism"
+        },
+        {
+            "id": "HP:0001680",
+            "name": "Coarctation of aorta"
+        },
+        {
+            "id": "HP:0000369",
+            "name": "Low-set ears"
+        },
+        {
+            "id": "HP:0000365",
+            "name": "Hearing impairment"
+        },
+        {
+            "id": "HP:0002949",
+            "name": "Fused cervical vertebrae"
+        },
+        {
+            "id": "HP:0000378",
+            "name": "Cupped ear"
+        },
+        {
+            "id": "HP:0001545",
+            "name": "Anteriorly placed anus"
+        },
+        {
+            "id": "HP:0000243",
+            "name": "Trigonocephaly"
+        },
+        {
+            "id": "HP:0000256",
+            "name": "Macrocephaly"
+        },
+        {
+            "id": "HP:0000280",
+            "name": "Coarse facial features"
+        },
+        {
+            "id": "HP:0000286",
+            "name": "Epicanthus"
+        },
+        {
+            "id": "HP:0000894",
+            "name": "Short clavicles"
+        },
+        {
+            "id": "HP:0003180",
+            "name": "Flat acetabular roof"
+        },
+        {
+            "id": "HP:0012745",
+            "name": "Short palpebral fissure"
+        },
+        {
+            "id": "HP:0004322",
+            "name": "Short stature"
+        },
+        {
+            "id": "HP:0002308",
+            "name": "Chiari malformation"
+        },
+        {
+            "id": "HP:0002119",
+            "name": "Ventriculomegaly"
+        },
+        {
+            "id": "HP:0002141",
+            "name": "Gait imbalance"
+        },
+        {
+            "id": "HP:0000193",
+            "name": "Bifid uvula"
+        },
+        {
+            "id": "HP:0002645",
+            "name": "Wormian bones"
+        },
+        {
+            "id": "HP:0000006",
+            "name": "Autosomal dominant inheritance"
+        },
+        {
+            "id": "HP:0000028",
+            "name": "Cryptorchidism"
+        },
+        {
+            "id": "HP:0002677",
+            "name": "Small foramen magnum"
+        },
+        {
+            "id": "HP:0000054",
+            "name": "Micropenis"
+        },
+        {
+            "id": "HP:0000044",
+            "name": "Hypogonadotropic hypogonadism"
+        },
+        {
+            "id": "HP:0000076",
+            "name": "Vesicoureteral reflux"
+        },
+        {
+            "id": "HP:0000062",
+            "name": "Ambiguous genitalia"
+        },
+        {
+            "id": "HP:0000083",
+            "name": "Renal insufficiency"
+        },
+        {
+            "id": "HP:0100864",
+            "name": "Short femoral neck"
+        },
+        {
+            "id": "HP:0001263",
+            "name": "Global developmental delay"
+        },
+        {
+            "id": "HP:0001249",
+            "name": "Intellectual disability"
+        },
+        {
+            "id": "HP:0001252",
+            "name": "Hypotonia"
+        },
+        {
+            "id": "HP:0001182",
+            "name": "Tapered finger"
+        }
+    ]
+}

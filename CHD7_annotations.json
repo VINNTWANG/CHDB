@@ -1,0 +1,974 @@
+{
+    "diseases": [
+        {
+            "id": "OMIM:612370",
+            "name": "Hypogonadotropic hypogonadism 5 with or without anosmia",
+            "mondoId": "MONDO:0012880",
+            "description": null
+        },
+        {
+            "id": "OMIM:214800",
+            "name": "Charge syndrome",
+            "mondoId": "MONDO:0008965",
+            "description": null
+        },
+        {
+            "id": "ORPHA:39041",
+            "name": "Omenn syndrome",
+            "mondoId": "MONDO:0011338",
+            "description": null
+        },
+        {
+            "id": "ORPHA:138",
+            "name": "CHARGE syndrome",
+            "mondoId": "MONDO:0008965",
+            "description": null
+        },
+        {
+            "id": "ORPHA:432",
+            "name": "Normosmic congenital hypogonadotropic hypogonadism",
+            "mondoId": "MONDO:0018555",
+            "description": null
+        },
+        {
+            "id": "ORPHA:478",
+            "name": "Kallmann syndrome",
+            "mondoId": "MONDO:0018800",
+            "description": null
+        }
+    ],
+    "phenotypes": [
+        {
+            "id": "HP:0002652",
+            "name": "Skeletal dysplasia"
+        },
+        {
+            "id": "HP:0000551",
+            "name": "Color vision defect"
+        },
+        {
+            "id": "HP:0001883",
+            "name": "Talipes"
+        },
+        {
+            "id": "HP:0001880",
+            "name": "Increased total eosinophil count"
+        },
+        {
+            "id": "HP:0000567",
+            "name": "Chorioretinal coloboma"
+        },
+        {
+            "id": "HP:0000568",
+            "name": "Microphthalmia"
+        },
+        {
+            "id": "HP:0001888",
+            "name": "Decreased total lymphocyte count"
+        },
+        {
+            "id": "HP:0000589",
+            "name": "Coloboma"
+        },
+        {
+            "id": "HP:0001831",
+            "name": "Short toe"
+        },
+        {
+            "id": "HP:0000504",
+            "name": "Abnormality of vision"
+        },
+        {
+            "id": "HP:0000505",
+            "name": "Visual impairment"
+        },
+        {
+            "id": "HP:0000508",
+            "name": "Ptosis"
+        },
+        {
+            "id": "HP:0000528",
+            "name": "Anophthalmia"
+        },
+        {
+            "id": "HP:0000518",
+            "name": "Cataract"
+        },
+        {
+            "id": "HP:0001761",
+            "name": "Pes cavus"
+        },
+        {
+            "id": "HP:0001744",
+            "name": "Splenomegaly"
+        },
+        {
+            "id": "HP:0000410",
+            "name": "Mixed hearing impairment"
+        },
+        {
+            "id": "HP:0001776",
+            "name": "Bilateral talipes equinovarus"
+        },
+        {
+            "id": "HP:0000453",
+            "name": "Choanal atresia"
+        },
+        {
+            "id": "HP:0001763",
+            "name": "Pes planus"
+        },
+        {
+            "id": "HP:0000465",
+            "name": "Webbed neck"
+        },
+        {
+            "id": "HP:0000458",
+            "name": "Anosmia"
+        },
+        {
+            "id": "HP:0000494",
+            "name": "Downslanted palpebral fissures"
+        },
+        {
+            "id": "HP:0000478",
+            "name": "Abnormality of the eye"
+        },
+        {
+            "id": "HP:0000480",
+            "name": "Retinal coloboma"
+        },
+        {
+            "id": "HP:0000486",
+            "name": "Strabismus"
+        },
+        {
+            "id": "HP:0005280",
+            "name": "Depressed nasal bridge"
+        },
+        {
+            "id": "HP:0001719",
+            "name": "Double outlet right ventricle"
+        },
+        {
+            "id": "HP:0000407",
+            "name": "Sensorineural hearing impairment"
+        },
+        {
+            "id": "HP:0004058",
+            "name": "Hand monodactyly"
+        },
+        {
+            "id": "HP:0006610",
+            "name": "Wide intermamillary distance"
+        },
+        {
+            "id": "HP:0001631",
+            "name": "Atrial septal defect"
+        },
+        {
+            "id": "HP:0001636",
+            "name": "Tetralogy of Fallot"
+        },
+        {
+            "id": "HP:0001629",
+            "name": "Ventricular septal defect"
+        },
+        {
+            "id": "HP:0002960",
+            "name": "Autoimmunity"
+        },
+        {
+            "id": "HP:0000324",
+            "name": "Facial asymmetry"
+        },
+        {
+            "id": "HP:0002992",
+            "name": "Abnormal tibia morphology"
+        },
+        {
+            "id": "HP:0001642",
+            "name": "Pulmonic stenosis"
+        },
+        {
+            "id": "HP:0001643",
+            "name": "Patent ductus arteriosus"
+        },
+        {
+            "id": "HP:0001646",
+            "name": "Abnormal aortic valve morphology"
+        },
+        {
+            "id": "HP:0000316",
+            "name": "Hypertelorism"
+        },
+        {
+            "id": "HP:0000321",
+            "name": "Square face"
+        },
+        {
+            "id": "HP:0000347",
+            "name": "Micrognathia"
+        },
+        {
+            "id": "HP:0001684",
+            "name": "Secundum atrial septal defect"
+        },
+        {
+            "id": "HP:0001671",
+            "name": "Abnormal cardiac septum morphology"
+        },
+        {
+            "id": "HP:0000369",
+            "name": "Low-set ears"
+        },
+        {
+            "id": "HP:0000358",
+            "name": "Posteriorly rotated ears"
+        },
+        {
+            "id": "HP:0000359",
+            "name": "Abnormality of the inner ear"
+        },
+        {
+            "id": "HP:0000365",
+            "name": "Hearing impairment"
+        },
+        {
+            "id": "HP:0002901",
+            "name": "Hypocalcemia"
+        },
+        {
+            "id": "HP:0001601",
+            "name": "Laryngomalacia"
+        },
+        {
+            "id": "HP:0001608",
+            "name": "Abnormality of the voice"
+        },
+        {
+            "id": "HP:0002937",
+            "name": "Hemivertebrae"
+        },
+        {
+            "id": "HP:0000394",
+            "name": "Lop ear"
+        },
+        {
+            "id": "HP:0000396",
+            "name": "Overfolded helix"
+        },
+        {
+            "id": "HP:0000378",
+            "name": "Cupped ear"
+        },
+        {
+            "id": "HP:0000377",
+            "name": "Abnormal pinna morphology"
+        },
+        {
+            "id": "HP:0000384",
+            "name": "Preauricular skin tag"
+        },
+        {
+            "id": "HP:0012385",
+            "name": "Camptodactyly"
+        },
+        {
+            "id": "HP:0001513",
+            "name": "Obesity"
+        },
+        {
+            "id": "HP:0001511",
+            "name": "Intrauterine growth retardation"
+        },
+        {
+            "id": "HP:0001508",
+            "name": "Failure to thrive"
+        },
+        {
+            "id": "HP:0000204",
+            "name": "Cleft upper lip"
+        },
+        {
+            "id": "HP:0001539",
+            "name": "Omphalocele"
+        },
+        {
+            "id": "HP:0001537",
+            "name": "Umbilical hernia"
+        },
+        {
+            "id": "HP:0030019",
+            "name": "Increased female libido"
+        },
+        {
+            "id": "HP:0030016",
+            "name": "Dyspareunia"
+        },
+        {
+            "id": "HP:0001561",
+            "name": "Polyhydramnios"
+        },
+        {
+            "id": "HP:0000252",
+            "name": "Microcephaly"
+        },
+        {
+            "id": "HP:0005113",
+            "name": "Aortic arch aneurysm"
+        },
+        {
+            "id": "HP:0000272",
+            "name": "Malar flattening"
+        },
+        {
+            "id": "HP:0000275",
+            "name": "Narrow face"
+        },
+        {
+            "id": "HP:0001596",
+            "name": "Alopecia"
+        },
+        {
+            "id": "HP:0000286",
+            "name": "Epicanthus"
+        },
+        {
+            "id": "HP:0008064",
+            "name": "Ichthyosis"
+        },
+        {
+            "id": "HP:0040171",
+            "name": "Decreased serum testosterone concentration"
+        },
+        {
+            "id": "HP:0000944",
+            "name": "Abnormal metaphysis morphology"
+        },
+        {
+            "id": "HP:0000938",
+            "name": "Osteopenia"
+        },
+        {
+            "id": "HP:0000939",
+            "name": "Osteoporosis"
+        },
+        {
+            "id": "HP:0000969",
+            "name": "Edema"
+        },
+        {
+            "id": "HP:0000958",
+            "name": "Dry skin"
+        },
+        {
+            "id": "HP:0011611",
+            "name": "Interrupted aortic arch"
+        },
+        {
+            "id": "HP:0000989",
+            "name": "Pruritus"
+        },
+        {
+            "id": "HP:0003241",
+            "name": "External genital hypoplasia"
+        },
+        {
+            "id": "HP:0000823",
+            "name": "Delayed puberty"
+        },
+        {
+            "id": "HP:0000824",
+            "name": "Decreased response to growth hormone stimulation test"
+        },
+        {
+            "id": "HP:0000821",
+            "name": "Hypothyroidism"
+        },
+        {
+            "id": "HP:0000829",
+            "name": "Hypoparathyroidism"
+        },
+        {
+            "id": "HP:0000830",
+            "name": "Anterior hypopituitarism"
+        },
+        {
+            "id": "HP:0000834",
+            "name": "Abnormality of the adrenal glands"
+        },
+        {
+            "id": "HP:0000869",
+            "name": "Secondary amenorrhea"
+        },
+        {
+            "id": "HP:0000860",
+            "name": "Parathyroid hypoplasia"
+        },
+        {
+            "id": "HP:0003164",
+            "name": "Hypothalamic gonadotropin-releasing hormone deficiency"
+        },
+        {
+            "id": "HP:0003187",
+            "name": "Breast hypoplasia"
+        },
+        {
+            "id": "HP:0004409",
+            "name": "Hyposmia"
+        },
+        {
+            "id": "HP:0004430",
+            "name": "Severe combined immunodeficiency"
+        },
+        {
+            "id": "HP:0030732",
+            "name": "Dysplastic tricuspid valve"
+        },
+        {
+            "id": "HP:0000786",
+            "name": "Primary amenorrhea"
+        },
+        {
+            "id": "HP:0011461",
+            "name": "Fetal onset"
+        },
+        {
+            "id": "HP:0011480",
+            "name": "Unilateral microphthalmos"
+        },
+        {
+            "id": "HP:0000722",
+            "name": "Compulsive behaviors"
+        },
+        {
+            "id": "HP:0000717",
+            "name": "Autism"
+        },
+        {
+            "id": "HP:0000716",
+            "name": "Depression"
+        },
+        {
+            "id": "HP:0000742",
+            "name": "Self-mutilation"
+        },
+        {
+            "id": "HP:0000739",
+            "name": "Anxiety"
+        },
+        {
+            "id": "HP:0000771",
+            "name": "Gynecomastia"
+        },
+        {
+            "id": "HP:0000772",
+            "name": "Abnormal rib morphology"
+        },
+        {
+            "id": "HP:0004348",
+            "name": "Abnormality of bone mineral density"
+        },
+        {
+            "id": "HP:0004349",
+            "name": "Reduced bone mineral density"
+        },
+        {
+            "id": "HP:0003022",
+            "name": "Hypoplasia of the ulna"
+        },
+        {
+            "id": "HP:0003048",
+            "name": "Radial head subluxation"
+        },
+        {
+            "id": "HP:0000802",
+            "name": "Impotence"
+        },
+        {
+            "id": "HP:0030680",
+            "name": "Abnormal cardiovascular system morphology"
+        },
+        {
+            "id": "HP:0004332",
+            "name": "Abnormal lymphocyte morphology"
+        },
+        {
+            "id": "HP:0004322",
+            "name": "Short stature"
+        },
+        {
+            "id": "HP:0000684",
+            "name": "Delayed eruption of teeth"
+        },
+        {
+            "id": "HP:0011381",
+            "name": "Aplasia of the semicircular canal"
+        },
+        {
+            "id": "HP:0011382",
+            "name": "Hypoplasia of the semicircular canal"
+        },
+        {
+            "id": "HP:0001903",
+            "name": "Anemia"
+        },
+        {
+            "id": "HP:0000625",
+            "name": "Eyelid coloboma"
+        },
+        {
+            "id": "HP:0001945",
+            "name": "Fever"
+        },
+        {
+            "id": "HP:0000612",
+            "name": "Iris coloboma"
+        },
+        {
+            "id": "HP:0001974",
+            "name": "Increased total leukocyte count"
+        },
+        {
+            "id": "HP:0000648",
+            "name": "Optic atrophy"
+        },
+        {
+            "id": "HP:0000632",
+            "name": "Lacrimation abnormality"
+        },
+        {
+            "id": "HP:0000639",
+            "name": "Nystagmus"
+        },
+        {
+            "id": "HP:0006824",
+            "name": "Cranial nerve paralysis"
+        },
+        {
+            "id": "HP:0004209",
+            "name": "Clinodactyly of the 5th finger"
+        },
+        {
+            "id": "HP:0004935",
+            "name": "Pulmonary artery atresia"
+        },
+        {
+            "id": "HP:0009778",
+            "name": "Short thumb"
+        },
+        {
+            "id": "HP:0010751",
+            "name": "Dimple chin"
+        },
+        {
+            "id": "HP:0100639",
+            "name": "Erectile dysfunction"
+        },
+        {
+            "id": "HP:0001072",
+            "name": "Thickened skin"
+        },
+        {
+            "id": "HP:0009804",
+            "name": "Tooth agenesis"
+        },
+        {
+            "id": "HP:0008527",
+            "name": "Congenital sensorineural hearing impairment"
+        },
+        {
+            "id": "HP:0200021",
+            "name": "Down-sloping shoulders"
+        },
+        {
+            "id": "HP:0100646",
+            "name": "Thyroiditis"
+        },
+        {
+            "id": "HP:0001018",
+            "name": "Abnormal palmar dermatoglyphics"
+        },
+        {
+            "id": "HP:0001019",
+            "name": "Erythroderma"
+        },
+        {
+            "id": "HP:0010628",
+            "name": "Facial palsy"
+        },
+        {
+            "id": "HP:0011961",
+            "name": "Non-obstructive azoospermia"
+        },
+        {
+            "id": "HP:0011968",
+            "name": "Feeding difficulties"
+        },
+        {
+            "id": "HP:0007018",
+            "name": "Attention deficit hyperactivity disorder"
+        },
+        {
+            "id": "HP:0010669",
+            "name": "Hypoplasia of the zygomatic bone"
+        },
+        {
+            "id": "HP:0100736",
+            "name": "Abnormal soft palate morphology"
+        },
+        {
+            "id": "HP:0002231",
+            "name": "Sparse body hair"
+        },
+        {
+            "id": "HP:0002247",
+            "name": "Duodenal atresia"
+        },
+        {
+            "id": "HP:0002240",
+            "name": "Hepatomegaly"
+        },
+        {
+            "id": "HP:0003577",
+            "name": "Congenital onset"
+        },
+        {
+            "id": "HP:0010515",
+            "name": "Aplasia/Hypoplasia of the thymus"
+        },
+        {
+            "id": "HP:0008213",
+            "name": "Gonadotropin deficiency"
+        },
+        {
+            "id": "HP:0009556",
+            "name": "Absent tibia"
+        },
+        {
+            "id": "HP:0010550",
+            "name": "Paraplegia"
+        },
+        {
+            "id": "HP:0002139",
+            "name": "Arrhinencephaly"
+        },
+        {
+            "id": "HP:0008187",
+            "name": "Absence of secondary sex characteristics"
+        },
+        {
+            "id": "HP:0008197",
+            "name": "Absence of pubertal development"
+        },
+        {
+            "id": "HP:0010443",
+            "name": "Bifid femur"
+        },
+        {
+            "id": "HP:0010442",
+            "name": "Polydactyly"
+        },
+        {
+            "id": "HP:0002090",
+            "name": "Pneumonia"
+        },
+        {
+            "id": "HP:0002093",
+            "name": "Respiratory insufficiency"
+        },
+        {
+            "id": "HP:0002015",
+            "name": "Dysphagia"
+        },
+        {
+            "id": "HP:0002028",
+            "name": "Chronic diarrhea"
+        },
+        {
+            "id": "HP:0002032",
+            "name": "Esophageal atresia"
+        },
+        {
+            "id": "HP:0002020",
+            "name": "Gastroesophageal reflux"
+        },
+        {
+            "id": "HP:0002023",
+            "name": "Anal atresia"
+        },
+        {
+            "id": "HP:0002025",
+            "name": "Anal stenosis"
+        },
+        {
+            "id": "HP:0002716",
+            "name": "Lymphadenopathy"
+        },
+        {
+            "id": "HP:0002750",
+            "name": "Delayed skeletal maturation"
+        },
+        {
+            "id": "HP:0000104",
+            "name": "Renal agenesis"
+        },
+        {
+            "id": "HP:0002757",
+            "name": "Recurrent fractures"
+        },
+        {
+            "id": "HP:0000100",
+            "name": "Nephrotic syndrome"
+        },
+        {
+            "id": "HP:0002761",
+            "name": "Generalized joint hypermobility"
+        },
+        {
+            "id": "HP:0000126",
+            "name": "Hydronephrosis"
+        },
+        {
+            "id": "HP:0000134",
+            "name": "Female hypogonadism"
+        },
+        {
+            "id": "HP:0000118",
+            "name": "Phenotypic abnormality"
+        },
+        {
+            "id": "HP:0410030",
+            "name": "Cleft lip"
+        },
+        {
+            "id": "HP:0000144",
+            "name": "Decreased fertility"
+        },
+        {
+            "id": "HP:0000175",
+            "name": "Cleft palate"
+        },
+        {
+            "id": "HP:0000160",
+            "name": "Narrow mouth"
+        },
+        {
+            "id": "HP:0000164",
+            "name": "Abnormality of the dentition"
+        },
+        {
+            "id": "HP:0002623",
+            "name": "Overriding aorta"
+        },
+        {
+            "id": "HP:0003974",
+            "name": "Absent radius"
+        },
+        {
+            "id": "HP:0002650",
+            "name": "Scoliosis"
+        },
+        {
+            "id": "HP:0001156",
+            "name": "Brachydactyly"
+        },
+        {
+            "id": "HP:0001161",
+            "name": "Hand polydactyly"
+        },
+        {
+            "id": "HP:0003782",
+            "name": "Eunuchoid habitus"
+        },
+        {
+            "id": "HP:0009906",
+            "name": "Aplasia/Hypoplasia of the earlobes"
+        },
+        {
+            "id": "HP:0008551",
+            "name": "Microtia"
+        },
+        {
+            "id": "HP:0003745",
+            "name": "Sporadic"
+        },
+        {
+            "id": "HP:0002410",
+            "name": "Aqueductal stenosis"
+        },
+        {
+            "id": "HP:0001291",
+            "name": "Abnormal cranial nerve morphology"
+        },
+        {
+            "id": "HP:0100806",
+            "name": "Sepsis"
+        },
+        {
+            "id": "HP:0001270",
+            "name": "Motor delay"
+        },
+        {
+            "id": "HP:0001288",
+            "name": "Gait disturbance"
+        },
+        {
+            "id": "HP:0001250",
+            "name": "Seizure"
+        },
+        {
+            "id": "HP:0001252",
+            "name": "Hypotonia"
+        },
+        {
+            "id": "HP:0001251",
+            "name": "Ataxia"
+        },
+        {
+            "id": "HP:0001249",
+            "name": "Intellectual disability"
+        },
+        {
+            "id": "HP:0001260",
+            "name": "Dysarthria"
+        },
+        {
+            "id": "HP:0001263",
+            "name": "Global developmental delay"
+        },
+        {
+            "id": "HP:0002575",
+            "name": "Tracheoesophageal fistula"
+        },
+        {
+            "id": "HP:0100840",
+            "name": "Aplasia/Hypoplasia of the eyebrow"
+        },
+        {
+            "id": "HP:0008734",
+            "name": "Decreased testicular size"
+        },
+        {
+            "id": "HP:0008736",
+            "name": "Hypoplasia of penis"
+        },
+        {
+            "id": "HP:0008724",
+            "name": "Hypoplasia of the ovary"
+        },
+        {
+            "id": "HP:0007360",
+            "name": "Aplasia/Hypoplasia of the cerebellum"
+        },
+        {
+            "id": "HP:0010978",
+            "name": "Abnormality of immune system physiology"
+        },
+        {
+            "id": "HP:0002553",
+            "name": "Highly arched eyebrow"
+        },
+        {
+            "id": "HP:0000089",
+            "name": "Renal hypoplasia"
+        },
+        {
+            "id": "HP:0000085",
+            "name": "Horseshoe kidney"
+        },
+        {
+            "id": "HP:0000066",
+            "name": "Labial hypoplasia"
+        },
+        {
+            "id": "HP:0000076",
+            "name": "Vesicoureteral reflux"
+        },
+        {
+            "id": "HP:0000044",
+            "name": "Hypogonadotropic hypogonadism"
+        },
+        {
+            "id": "HP:0000054",
+            "name": "Micropenis"
+        },
+        {
+            "id": "HP:0000050",
+            "name": "Hypoplastic male external genitalia"
+        },
+        {
+            "id": "HP:0000048",
+            "name": "Bifid scrotum"
+        },
+        {
+            "id": "HP:0012020",
+            "name": "Right aortic arch"
+        },
+        {
+            "id": "HP:0001360",
+            "name": "Holoprosencephaly"
+        },
+        {
+            "id": "HP:0000026",
+            "name": "Male hypogonadism"
+        },
+        {
+            "id": "HP:0000028",
+            "name": "Cryptorchidism"
+        },
+        {
+            "id": "HP:0000027",
+            "name": "Azoospermia"
+        },
+        {
+            "id": "HP:0008897",
+            "name": "Postnatal growth retardation"
+        },
+        {
+            "id": "HP:0007549",
+            "name": "Desquamation of skin soon after birth"
+        },
+        {
+            "id": "HP:0008872",
+            "name": "Feeding difficulties in infancy"
+        },
+        {
+            "id": "HP:0000002",
+            "name": "Abnormality of body height"
+        },
+        {
+            "id": "HP:0001324",
+            "name": "Muscle weakness"
+        },
+        {
+            "id": "HP:0000013",
+            "name": "Hypoplasia of the uterus"
+        },
+        {
+            "id": "HP:0000008",
+            "name": "Abnormal morphology of female internal genitalia"
+        },
+        {
+            "id": "HP:0001335",
+            "name": "Bimanual synkinesia"
+        },
+        {
+            "id": "HP:0002665",
+            "name": "Lymphoma"
+        },
+        {
+            "id": "HP:0001337",
+            "name": "Tremor"
+        },
+        {
+            "id": "HP:0000006",
+            "name": "Autosomal dominant inheritance"
+        },
+        {
+            "id": "HP:0001305",
+            "name": "Dandy-Walker malformation"
+        }
+    ]
+}

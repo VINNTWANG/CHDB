@@ -1,0 +1,320 @@
+{
+    "diseases": [
+        {
+            "id": "ORPHA:2382",
+            "name": "Lennox-Gastaut syndrome",
+            "mondoId": "MONDO:0016532",
+            "description": null
+        },
+        {
+            "id": "ORPHA:1942",
+            "name": "Myoclonic-astatic epilepsy",
+            "mondoId": "MONDO:0014633",
+            "description": null
+        },
+        {
+            "id": "OMIM:615369",
+            "name": "Develomental and epileptic encephalopathy 94",
+            "mondoId": "MONDO:0014150",
+            "description": null
+        }
+    ],
+    "phenotypes": [
+        {
+            "id": "HP:0000741",
+            "name": "Apathy"
+        },
+        {
+            "id": "HP:0000568",
+            "name": "Microphthalmia"
+        },
+        {
+            "id": "HP:0011220",
+            "name": "Prominent forehead"
+        },
+        {
+            "id": "HP:0000431",
+            "name": "Wide nasal bridge"
+        },
+        {
+            "id": "HP:0000463",
+            "name": "Anteverted nares"
+        },
+        {
+            "id": "HP:0011171",
+            "name": "Simple febrile seizure"
+        },
+        {
+            "id": "HP:0011170",
+            "name": "Generalized myoclonic-atonic seizure"
+        },
+        {
+            "id": "HP:0011182",
+            "name": "Interictal epileptiform activity"
+        },
+        {
+            "id": "HP:0011195",
+            "name": "EEG with focal sharp slow waves"
+        },
+        {
+            "id": "HP:0011197",
+            "name": "EEG with focal spike waves"
+        },
+        {
+            "id": "HP:0031475",
+            "name": "Status epilepticus without prominent motor symptoms"
+        },
+        {
+            "id": "HP:0032792",
+            "name": "Tonic seizure"
+        },
+        {
+            "id": "HP:0000343",
+            "name": "Long philtrum"
+        },
+        {
+            "id": "HP:0011097",
+            "name": "Epileptic spasm"
+        },
+        {
+            "id": "HP:0000219",
+            "name": "Thin upper lip vermilion"
+        },
+        {
+            "id": "HP:0000252",
+            "name": "Microcephaly"
+        },
+        {
+            "id": "HP:0000289",
+            "name": "Broad philtrum"
+        },
+        {
+            "id": "HP:0012760",
+            "name": "Reduced social responsiveness"
+        },
+        {
+            "id": "HP:0012758",
+            "name": "Neurodevelopmental delay"
+        },
+        {
+            "id": "HP:0011463",
+            "name": "Childhood onset"
+        },
+        {
+            "id": "HP:0000708",
+            "name": "Atypical behavior"
+        },
+        {
+            "id": "HP:0000709",
+            "name": "Psychosis"
+        },
+        {
+            "id": "HP:0000729",
+            "name": "Autistic behavior"
+        },
+        {
+            "id": "HP:0000718",
+            "name": "Aggressive behavior"
+        },
+        {
+            "id": "HP:0001159",
+            "name": "Syndactyly"
+        },
+        {
+            "id": "HP:0025190",
+            "name": "Bilateral tonic-clonic seizure with generalized onset"
+        },
+        {
+            "id": "HP:0009928",
+            "name": "Thick nasal alae"
+        },
+        {
+            "id": "HP:0007270",
+            "name": "Atypical absence seizure"
+        },
+        {
+            "id": "HP:0007256",
+            "name": "Abnormal pyramidal sign"
+        },
+        {
+            "id": "HP:0020216",
+            "name": "Visually-induced seizure"
+        },
+        {
+            "id": "HP:0001298",
+            "name": "Encephalopathy"
+        },
+        {
+            "id": "HP:0001268",
+            "name": "Mental deterioration"
+        },
+        {
+            "id": "HP:0001252",
+            "name": "Hypotonia"
+        },
+        {
+            "id": "HP:0001251",
+            "name": "Ataxia"
+        },
+        {
+            "id": "HP:0001249",
+            "name": "Intellectual disability"
+        },
+        {
+            "id": "HP:0001263",
+            "name": "Global developmental delay"
+        },
+        {
+            "id": "HP:0100851",
+            "name": "Abnormal emotional state"
+        },
+        {
+            "id": "HP:0410263",
+            "name": "Brain imaging abnormality"
+        },
+        {
+            "id": "HP:0007359",
+            "name": "Focal-onset seizure"
+        },
+        {
+            "id": "HP:0002527",
+            "name": "Falls"
+        },
+        {
+            "id": "HP:0012075",
+            "name": "Personality disorder"
+        },
+        {
+            "id": "HP:0012001",
+            "name": "EEG with generalized polyspikes"
+        },
+        {
+            "id": "HP:0012000",
+            "name": "EEG with generalized spikes"
+        },
+        {
+            "id": "HP:0001326",
+            "name": "EEG with irregular generalized spike and wave complexes"
+        },
+        {
+            "id": "HP:0001337",
+            "name": "Tremor"
+        },
+        {
+            "id": "HP:0000006",
+            "name": "Autosomal dominant inheritance"
+        },
+        {
+            "id": "HP:0001336",
+            "name": "Myoclonus"
+        },
+        {
+            "id": "HP:0000179",
+            "name": "Thick lower lip vermilion"
+        },
+        {
+            "id": "HP:0000154",
+            "name": "Wide mouth"
+        },
+        {
+            "id": "HP:0002069",
+            "name": "Bilateral tonic-clonic seizure"
+        },
+        {
+            "id": "HP:0002123",
+            "name": "Generalized myoclonic seizure"
+        },
+        {
+            "id": "HP:0002121",
+            "name": "Generalized non-motor (absence) seizure"
+        },
+        {
+            "id": "HP:0002133",
+            "name": "Status epilepticus"
+        },
+        {
+            "id": "HP:0003593",
+            "name": "Infantile onset"
+        },
+        {
+            "id": "HP:0200134",
+            "name": "Epileptic encephalopathy"
+        },
+        {
+            "id": "HP:0002292",
+            "name": "Frontal balding"
+        },
+        {
+            "id": "HP:0007018",
+            "name": "Attention deficit hyperactivity disorder"
+        },
+        {
+            "id": "HP:0002392",
+            "name": "EEG with polyspike wave complexes"
+        },
+        {
+            "id": "HP:0002363",
+            "name": "Abnormal brainstem morphology"
+        },
+        {
+            "id": "HP:0002376",
+            "name": "Developmental regression"
+        },
+        {
+            "id": "HP:0002373",
+            "name": "Febrile seizure (within the age range of 3 months to 6 years)"
+        },
+        {
+            "id": "HP:0002353",
+            "name": "EEG abnormality"
+        },
+        {
+            "id": "HP:0002321",
+            "name": "Vertigo"
+        },
+        {
+            "id": "HP:0002317",
+            "name": "Unsteady gait"
+        },
+        {
+            "id": "HP:0002332",
+            "name": "Lack of peer relationships"
+        },
+        {
+            "id": "HP:0010841",
+            "name": "Multifocal epileptiform discharges"
+        },
+        {
+            "id": "HP:0010845",
+            "name": "EEG with generalized slow activity"
+        },
+        {
+            "id": "HP:0010819",
+            "name": "Atonic seizure"
+        },
+        {
+            "id": "HP:0010818",
+            "name": "Generalized tonic seizure"
+        },
+        {
+            "id": "HP:0100678",
+            "name": "Premature skin wrinkling"
+        },
+        {
+            "id": "HP:0001999",
+            "name": "Abnormal facial shape"
+        },
+        {
+            "id": "HP:0000752",
+            "name": "Hyperactivity"
+        },
+        {
+            "id": "HP:0000737",
+            "name": "Irritability"
+        },
+        {
+            "id": "HP:0000750",
+            "name": "Delayed speech and language development"
+        }
+    ]
+}

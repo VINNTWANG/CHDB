@@ -1,0 +1,28 @@
+[
+    {
+        "name": "Chromo 1",
+        "start": 292,
+        "end": 343
+    },
+    {
+        "name": "Chromo 2",
+        "start": 375,
+        "end": 439
+    },
+    {
+        "name": "Helicase ATP-binding",
+        "start": 473,
+        "end": 647
+    },
+    {
+        "name": "Helicase C-terminal",
+        "start": 787,
+        "end": 959
+    },
+    {
+        "name": "Myb-like",
+        "start": 1449,
+        "end": 1503
+    }
+
+]

@@ -1,0 +1,406 @@
+{
+    "diseases": [
+        {
+            "id": "OMIM:615032",
+            "name": "Intellectual developmental disorder with autism and macrocephaly",
+            "mondoId": "MONDO:0014017",
+            "description": null
+        },
+        {
+            "id": "ORPHA:261229",
+            "name": "14q11.2 microduplication syndrome",
+            "mondoId": "MONDO:0016835",
+            "description": null
+        }
+    ],
+    "phenotypes": [
+        {
+            "id": "HP:0100021",
+            "name": "Cerebral palsy"
+        },
+        {
+            "id": "HP:0000565",
+            "name": "Esotropia"
+        },
+        {
+            "id": "HP:0000508",
+            "name": "Ptosis"
+        },
+        {
+            "id": "HP:0000431",
+            "name": "Wide nasal bridge"
+        },
+        {
+            "id": "HP:0000445",
+            "name": "Wide nose"
+        },
+        {
+            "id": "HP:0001763",
+            "name": "Pes planus"
+        },
+        {
+            "id": "HP:0000494",
+            "name": "Downslanted palpebral fissures"
+        },
+        {
+            "id": "HP:0005280",
+            "name": "Depressed nasal bridge"
+        },
+        {
+            "id": "HP:0000400",
+            "name": "Macrotia"
+        },
+        {
+            "id": "HP:0000303",
+            "name": "Mandibular prognathia"
+        },
+        {
+            "id": "HP:0000307",
+            "name": "Pointed chin"
+        },
+        {
+            "id": "HP:0000316",
+            "name": "Hypertelorism"
+        },
+        {
+            "id": "HP:0000319",
+            "name": "Smooth philtrum"
+        },
+        {
+            "id": "HP:0000347",
+            "name": "Micrognathia"
+        },
+        {
+            "id": "HP:0000336",
+            "name": "Prominent supraorbital ridges"
+        },
+        {
+            "id": "HP:0000337",
+            "name": "Broad forehead"
+        },
+        {
+            "id": "HP:0000343",
+            "name": "Long philtrum"
+        },
+        {
+            "id": "HP:0000358",
+            "name": "Posteriorly rotated ears"
+        },
+        {
+            "id": "HP:0002904",
+            "name": "Hyperbilirubinemia"
+        },
+        {
+            "id": "HP:0001513",
+            "name": "Obesity"
+        },
+        {
+            "id": "HP:0031354",
+            "name": "Sleep onset insomnia"
+        },
+        {
+            "id": "HP:0025502",
+            "name": "Overweight"
+        },
+        {
+            "id": "HP:0001561",
+            "name": "Polyhydramnios"
+        },
+        {
+            "id": "HP:0000252",
+            "name": "Microcephaly"
+        },
+        {
+            "id": "HP:0002808",
+            "name": "Kyphosis"
+        },
+        {
+            "id": "HP:0000256",
+            "name": "Macrocephaly"
+        },
+        {
+            "id": "HP:0000278",
+            "name": "Retrognathia"
+        },
+        {
+            "id": "HP:0000286",
+            "name": "Epicanthus"
+        },
+        {
+            "id": "HP:0000956",
+            "name": "Acanthosis nigricans"
+        },
+        {
+            "id": "HP:0000957",
+            "name": "Cafe-au-lait spot"
+        },
+        {
+            "id": "HP:0003270",
+            "name": "Abdominal distention"
+        },
+        {
+            "id": "HP:5200018",
+            "name": "Stereotypic upper-extremity movements"
+        },
+        {
+            "id": "HP:0000821",
+            "name": "Hypothyroidism"
+        },
+        {
+            "id": "HP:0012760",
+            "name": "Reduced social responsiveness"
+        },
+        {
+            "id": "HP:0012758",
+            "name": "Neurodevelopmental delay"
+        },
+        {
+            "id": "HP:0011461",
+            "name": "Fetal onset"
+        },
+        {
+            "id": "HP:0011462",
+            "name": "Young adult onset"
+        },
+        {
+            "id": "HP:0011463",
+            "name": "Childhood onset"
+        },
+        {
+            "id": "HP:0000709",
+            "name": "Psychosis"
+        },
+        {
+            "id": "HP:0000717",
+            "name": "Autism"
+        },
+        {
+            "id": "HP:0000718",
+            "name": "Aggressive behavior"
+        },
+        {
+            "id": "HP:0000716",
+            "name": "Depression"
+        },
+        {
+            "id": "HP:0000750",
+            "name": "Delayed speech and language development"
+        },
+        {
+            "id": "HP:0000736",
+            "name": "Short attention span"
+        },
+        {
+            "id": "HP:0000739",
+            "name": "Anxiety"
+        },
+        {
+            "id": "HP:0100033",
+            "name": "Tics"
+        },
+        {
+            "id": "HP:0100023",
+            "name": "Recurrent hand flapping"
+        },
+        {
+            "id": "HP:0002451",
+            "name": "Limb dystonia"
+        },
+        {
+            "id": "HP:0007325",
+            "name": "Generalized dystonia"
+        },
+        {
+            "id": "HP:0010864",
+            "name": "Intellectual disability, severe"
+        },
+        {
+            "id": "HP:0001290",
+            "name": "Generalized hypotonia"
+        },
+        {
+            "id": "HP:0001270",
+            "name": "Motor delay"
+        },
+        {
+            "id": "HP:0001256",
+            "name": "Intellectual disability, mild"
+        },
+        {
+            "id": "HP:0001250",
+            "name": "Seizure"
+        },
+        {
+            "id": "HP:0001252",
+            "name": "Hypotonia"
+        },
+        {
+            "id": "HP:0001249",
+            "name": "Intellectual disability"
+        },
+        {
+            "id": "HP:0002591",
+            "name": "Polyphagia"
+        },
+        {
+            "id": "HP:0001263",
+            "name": "Global developmental delay"
+        },
+        {
+            "id": "HP:0002553",
+            "name": "Highly arched eyebrow"
+        },
+        {
+            "id": "HP:0000098",
+            "name": "Tall stature"
+        },
+        {
+            "id": "HP:0025352",
+            "name": "Typically de novo"
+        },
+        {
+            "id": "HP:0000053",
+            "name": "Macroorchidism"
+        },
+        {
+            "id": "HP:0001350",
+            "name": "Slurred speech"
+        },
+        {
+            "id": "HP:0008872",
+            "name": "Feeding difficulties in infancy"
+        },
+        {
+            "id": "HP:0000006",
+            "name": "Autosomal dominant inheritance"
+        },
+        {
+            "id": "HP:0012171",
+            "name": "Stereotypical hand wringing"
+        },
+        {
+            "id": "HP:0000194",
+            "name": "Open mouth"
+        },
+        {
+            "id": "HP:0002021",
+            "name": "Pyloric stenosis"
+        },
+        {
+            "id": "HP:0002019",
+            "name": "Constipation"
+        },
+        {
+            "id": "HP:0002037",
+            "name": "Inflammation of the large intestine"
+        },
+        {
+            "id": "HP:0002014",
+            "name": "Diarrhea"
+        },
+        {
+            "id": "HP:0002119",
+            "name": "Ventriculomegaly"
+        },
+        {
+            "id": "HP:0002187",
+            "name": "Intellectual disability, profound"
+        },
+        {
+            "id": "HP:0010529",
+            "name": "Echolalia"
+        },
+        {
+            "id": "HP:0011856",
+            "name": "Pica"
+        },
+        {
+            "id": "HP:0002263",
+            "name": "Exaggerated cupid's bow"
+        },
+        {
+            "id": "HP:0003593",
+            "name": "Infantile onset"
+        },
+        {
+            "id": "HP:0100716",
+            "name": "Self-injurious behavior"
+        },
+        {
+            "id": "HP:0032012",
+            "name": "Heterotropia"
+        },
+        {
+            "id": "HP:0007018",
+            "name": "Attention deficit hyperactivity disorder"
+        },
+        {
+            "id": "HP:0011968",
+            "name": "Feeding difficulties"
+        },
+        {
+            "id": "HP:0001065",
+            "name": "Striae distensae"
+        },
+        {
+            "id": "HP:0002360",
+            "name": "Sleep abnormality"
+        },
+        {
+            "id": "HP:0002376",
+            "name": "Developmental regression"
+        },
+        {
+            "id": "HP:0002373",
+            "name": "Febrile seizure (within the age range of 3 months to 6 years)"
+        },
+        {
+            "id": "HP:0002342",
+            "name": "Intellectual disability, moderate"
+        },
+        {
+            "id": "HP:0002356",
+            "name": "Writer's cramp"
+        },
+        {
+            "id": "HP:0002312",
+            "name": "Clumsiness"
+        },
+        {
+            "id": "HP:0004209",
+            "name": "Clinodactyly of the 5th finger"
+        },
+        {
+            "id": "HP:0006855",
+            "name": "Cerebellar vermis atrophy"
+        },
+        {
+            "id": "HP:0031874",
+            "name": "Late chronotype"
+        },
+        {
+            "id": "HP:4000081",
+            "name": "Reduced production of gestures"
+        },
+        {
+            "id": "HP:0006889",
+            "name": "Intellectual disability, borderline"
+        },
+        {
+            "id": "HP:4000073",
+            "name": "Pronoun reversal"
+        },
+        {
+            "id": "HP:0000666",
+            "name": "Horizontal nystagmus"
+        },
+        {
+            "id": "HP:0400000",
+            "name": "Tall chin"
+        },
+        {
+            "id": "HP:0011410",
+            "name": "Caesarean section"
+        }
+    ]
+}

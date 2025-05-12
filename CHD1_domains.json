@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Chromo 1",
+        "start": 272,
+        "end": 364
+    },
+    {
+        "name": "Chromo 2",
+        "start": 389,
+        "end": 452
+    },
+    {
+        "name": "Helicase ATP-binding",
+        "start": 493,
+        "end": 663
+    },
+    {
+        "name": "Helicase C-terminal",
+        "start": 792,
+        "end": 943
+    }
+]
