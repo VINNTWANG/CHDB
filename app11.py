@@ -521,18 +521,8 @@ def classify_hpo_phenotype_category(phenotype_name):
 def add_domain_legend_traces(fig, domains_data_local):
     current_domain_colors = DOMAIN_COLORS
     for i, domain in enumerate(domains_data_local):
-        color = current_domain_colors[i % len(current_domain_colors)]
-        name = domain.get("name", f"Domain {i+1}")
-        start_aa = domain.get('start', 'N/A')
-        end_aa = domain.get('end', 'N/A')
-        legend_entry_name = f"{name}: {start_aa} - {end_aa} aa"
-        fig.add_trace(go.Scatter(
-            x=[None], y=[None], mode='markers',
-            marker=dict(color=color, size=10, symbol='square'),
-            name=legend_entry_name,
-            legendgroup="domains", 
-            legendgrouptitle_text="Protein Domain Details" # Changed title for clarity in legend
-        ))
+        color = current_domain_colors[i % len(current_domain_colors)]; name = domain.get("name", f"Domain {i+1}")
+        fig.add_trace(go.Scatter(x=[None], y=[None], mode='markers',marker=dict(color=color, size=10, symbol='square'),name=name,legendgroup="domains", legendgrouptitle_text="Protein Domains"))
 
 def create_domain_shapes_paper(domains_data_local, gene_length_local):
     current_domain_colors = DOMAIN_COLORS
@@ -576,21 +566,26 @@ def _setup_single_plot_with_domain_space(fig_title, y_axis_title, y_axis_range, 
             tickfont_size=PLOT_FONT_SIZE_AXIS_TICKS, title_font_size=PLOT_FONT_SIZE_AXIS_TITLE, title_standoff=10
         ),
         height=plot_height,
-        margin=dict(t=70, b=110 if show_xaxis_title else 90, l=80, r=230), # Increased right margin for legend
+        margin=dict(t=70, b=110 if show_xaxis_title else 90, l=80, r=170), 
         legend=dict(
             x=1.02, y=1, xanchor='left', yanchor='top', 
             bgcolor='rgba(255,255,255,0.9)',
             bordercolor="#E0E0E0", borderwidth=1, 
             font_size=PLOT_FONT_SIZE_LEGEND_ITEMS,
             title_font_size=PLOT_FONT_SIZE_LEGEND_TITLE, 
-            tracegroupgap=20 # Increased gap between legend groups
+            tracegroupgap=10
         )
     )
     return fig
 
 def create_binned_stacked_variant_plot(df_positions_filtered, domains_data_local, gene_length_local, current_gene_name, bin_size=BIN_SIZE_POSITIONAL):
     plot_title = f"{current_gene_name} ClinVar Variant Overview"
-    # Removed data_source_annotation definition and usage
+    data_source_annotation = dict(
+        text="Data displayed here is from ClinVar's 2025年5月6日 release.",
+        align='left', showarrow=False, xref='paper', yref='paper', x=0.01, 
+        y= -0.35 if domains_data_local else -0.25, 
+        font=dict(size=10, color="#555")
+    )
 
     if df_positions_filtered.empty:
         fig = _setup_single_plot_with_domain_space(
@@ -605,8 +600,7 @@ def create_binned_stacked_variant_plot(df_positions_filtered, domains_data_local
                                 x=0.5, y=(DOMAIN_TRACK_PAPER_HEIGHT * 0.1), 
                                 xanchor='center', yanchor='top',
                                 font=dict(size=PLOT_FONT_SIZE_AXIS_TITLE-1, family=PLOT_FONT_FAMILY))
-             add_domain_legend_traces(fig, domains_data_local) # Add domain legend even for empty plot
-        # fig.add_annotation(**data_source_annotation) # Removed
+        fig.add_annotation(**data_source_annotation)
         return fig
 
     df_copy = df_positions_filtered.copy()
@@ -626,8 +620,7 @@ def create_binned_stacked_variant_plot(df_positions_filtered, domains_data_local
                                 x=0.5, y=(DOMAIN_TRACK_PAPER_HEIGHT * 0.1),
                                 xanchor='center', yanchor='top',
                                 font=dict(size=PLOT_FONT_SIZE_AXIS_TITLE-1, family=PLOT_FONT_FAMILY))
-             add_domain_legend_traces(fig, domains_data_local) # Add domain legend
-        # fig.add_annotation(**data_source_annotation) # Removed
+        fig.add_annotation(**data_source_annotation)
         return fig
 
     df_copy['Position'] = df_copy['Position'].astype(int)
@@ -646,8 +639,7 @@ def create_binned_stacked_variant_plot(df_positions_filtered, domains_data_local
                                 x=0.5, y=(DOMAIN_TRACK_PAPER_HEIGHT * 0.1),
                                 xanchor='center', yanchor='top',
                                 font=dict(size=PLOT_FONT_SIZE_AXIS_TITLE-1, family=PLOT_FONT_FAMILY))
-             add_domain_legend_traces(fig, domains_data_local) # Add domain legend
-        # fig.add_annotation(**data_source_annotation) # Removed
+        fig.add_annotation(**data_source_annotation)
         return fig
 
     max_pos_data = df_copy['Position'].max() if not df_copy.empty else 0
@@ -686,8 +678,7 @@ def create_binned_stacked_variant_plot(df_positions_filtered, domains_data_local
                                 x=0.5, y=(DOMAIN_TRACK_PAPER_HEIGHT * 0.1),
                                 xanchor='center', yanchor='top',
                                 font=dict(size=PLOT_FONT_SIZE_AXIS_TITLE-1, family=PLOT_FONT_FAMILY))
-             add_domain_legend_traces(fig, domains_data_local) # Add domain legend
-        # fig.add_annotation(**data_source_annotation) # Removed
+        fig.add_annotation(**data_source_annotation)
         return fig
 
     df_copy['Bin_Interval_Str'] = pd.cut(df_copy['Position'],
@@ -757,10 +748,6 @@ def create_binned_stacked_variant_plot(df_positions_filtered, domains_data_local
             legendgrouptitle_text="Variant Significance",
             width=bin_size * 0.98 
         ))
-    
-    # Add domain legend traces if domains exist, after significance traces
-    if domains_data_local:
-        add_domain_legend_traces(fig, domains_data_local)
 
     domain_shapes = create_domain_shapes_paper(domains_data_local, gene_length_local)
     fig.update_layout(shapes=domain_shapes)
@@ -827,7 +814,7 @@ def create_binned_stacked_variant_plot(df_positions_filtered, domains_data_local
             font=dict(size=PLOT_FONT_SIZE_AXIS_TITLE-1, family=PLOT_FONT_FAMILY)
         )
     
-    # fig.add_annotation(**data_source_annotation) # Removed this line
+    fig.add_annotation(**data_source_annotation)
     return fig
 
 def create_interactive_lollipop(df_positions_filtered, domains_data_local, gene_length_local, current_gene_name):
@@ -966,7 +953,7 @@ def create_interactive_density(df_positions_filtered, domains_data_local, gene_l
     )
     if df_positions_filtered.empty:
         fig = go.Figure().update_layout(title_text=f"{current_gene_name} Individual Variant Plot (No Data)", height=FIG_HEIGHT, xaxis_title="Protein Position (aa)", xaxis_range=[-gene_length_local * 0.02, gene_length_local * 1.02])
-        fig.add_annotation(**data_source_annotation_density) # Kept for this plot as per user intent (only remove from binned)
+        fig.add_annotation(**data_source_annotation_density)
         return fig
 
     fig = _setup_single_plot_with_domain_space(
@@ -995,7 +982,7 @@ def create_interactive_density(df_positions_filtered, domains_data_local, gene_l
             xanchor='center', yanchor='top',
             font=dict(size=PLOT_FONT_SIZE_AXIS_TITLE-1, family=PLOT_FONT_FAMILY)
         )
-    fig.add_annotation(**data_source_annotation_density) # Kept for this plot
+    fig.add_annotation(**data_source_annotation_density)
     return fig
 
 def create_origin_pie_chart(df_gene_variants_filtered, gene_name):
@@ -1482,9 +1469,8 @@ st.session_state[f'sel_type_{selected_gene}'] = selected_types_filter
 st.sidebar.markdown("---")
 st.sidebar.markdown("""<div class="sidebar-footer">
 <b>Developed by:</b><br>
-Zihao Wang<br>
-<i>Lab Feng</i><br>
-IBS, Fudan University
+Zi-Hao Wang<br>
+Instutute of Biomedical Sciences(IBS), Fudan University
 </div>""", unsafe_allow_html=True)
 st.sidebar.markdown("""<div class="sidebar-footer" style="margin-top:10px;">
 <b>Data Sources:</b><br>
@@ -1494,7 +1480,7 @@ st.sidebar.markdown("""<div class="sidebar-footer" style="margin-top:10px;">
 </div>""", unsafe_allow_html=True)
 contact_email_sidebar = "soap@fastemail.io" 
 current_date_sidebar = datetime.now().strftime("%Y.%m.%d")
-version_info_sidebar = f"Wangzihao_CHD_Explorer_{current_date_sidebar}_v3.8.9" 
+version_info_sidebar = f"v3.8.9" 
 st.sidebar.markdown(f"""<div class="sidebar-footer" style="margin-top:10px;">
 <b>Contact:</b> <a href="mailto:{contact_email_sidebar}">{contact_email_sidebar}</a><br>
 <b>Last Updated:</b> {current_date_sidebar}<br>
@@ -1503,7 +1489,7 @@ st.sidebar.markdown(f"""<div class="sidebar-footer" style="margin-top:10px;">
 </div>""", unsafe_allow_html=True)
 
 
-st.title("CHD Gene Family Variant & HPO Explorer")
+st.title("CHD Gene Family Variant Database")
 
 df_hpo_phenotypes, df_hpo_diseases, hpo_load_error = load_hpo_data(selected_gene)
 if hpo_load_error and "file not found" not in hpo_load_error.lower(): 
@@ -1604,7 +1590,12 @@ with main_tab1:
             fig_binned = create_binned_stacked_variant_plot(df_positions_filtered, gene_domains, gene_length, selected_gene)
             st.plotly_chart(fig_binned, use_container_width=True)
             
-            # Removed the st.caption for domain details as it's now in the plot legend
+            if gene_domains:
+                domain_details_md = "<b>Protein Domain Details:</b><br>"
+                for i, domain in enumerate(gene_domains):
+                    color = DOMAIN_COLORS[i % len(DOMAIN_COLORS)]
+                    domain_details_md += f"<span style='color:{color}; font-weight:bold;'>■ {domain.get('name', f'Domain {i+1}')}</span>: {domain.get('start','N/A')} - {domain.get('end','N/A')} aa<br>"
+                st.caption(domain_details_md, unsafe_allow_html=True)
             
             st.markdown("---") 
 
@@ -1613,7 +1604,7 @@ with main_tab1:
                 show_details = st.checkbox(
                     "📊 Show Detailed Variant Plots (Lollipop, Waterfall, Individual Points)", 
                     value=False, 
-                    key=f"show_details_{selected_gene}_main", 
+                    key=f"show_details_{selected_gene}_main", # Ensure key is unique if used elsewhere
                     help="Display additional detailed plots for the filtered variants. These plots may take a moment to render."
                 )
 
@@ -1652,7 +1643,7 @@ with main_tab1:
 
         st.markdown("---");
         st.markdown(f"Gene Length Used for Plotting {selected_gene}: **{gene_length} aa**. Domains: **{', '.join([d['name'] for d in gene_domains]) if gene_domains else 'N/A'}**.")
-        # Removed data source from here as it's either in specific plots or was generally removed from binned plot
+        st.markdown(f"Data source: ClinVar (2025年5月6日 release).") 
         st.markdown("---"); st.subheader(f"Explore {selected_gene} on External Resources")
         link_defs = [{"name": "PubMed", "url": f"https://pubmed.ncbi.nlm.nih.gov/?term={selected_gene}", "icon": "🔬"},{"name": "OMIM", "url": f"https://www.omim.org/search?index=entry&search={selected_gene}", "icon": "🧬"},{"name": "DECIPHER", "url": f"https://www.deciphergenomics.org/gene/{selected_gene}/overview/protein-genomic", "icon": "💡"},{"name": "gnomAD", "url": f"https://gnomad.broadinstitute.org/search/{selected_gene}", "icon": "📊"},{"name": "Protein Atlas", "url": f"https://www.proteinatlas.org/search/{selected_gene}", "icon": "🖼️"}]
         cols = st.columns(len(link_defs));
@@ -1680,3 +1671,111 @@ with main_tab2:
         fig_patho_counts = px.bar(comparison_summary_df.sort_values("Pathogenic/Likely Path. Variants", ascending=False), x="Gene", y="Pathogenic/Likely Path. Variants",title="Pathogenic/Likely Pathogenic Variants per CHD Gene",labels={"Pathogenic/Likely Path. Variants": "Number of Patho/LP Variants"},height=COMPARISON_PLOT_HEIGHT,color_discrete_sequence=["#007AFF"])
         fig_patho_counts.update_layout(font_family=PLOT_FONT_FAMILY, margin=dict(r=170, t=50), legend=dict(x=1.02, y=1, xanchor='left', yanchor='top')); st.plotly_chart(fig_patho_counts, use_container_width=True); st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("##### Clinical Significance Distribution")
+        fig_sig_dist = plot_significance_distribution_per_gene(all_chd_variants_df); st.plotly_chart(fig_sig_dist, use_container_width=True); st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown("##### Pathogenic Variant Types Heatmap (Gene vs Type)")
+        fig_patho_types_heatmap = plot_pathogenic_variant_types_heatmap(all_chd_variants_df); st.plotly_chart(fig_patho_types_heatmap, use_container_width=True); st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown(f"##### Overall Pathogenic ClinVar Phenotype Distribution (Top {top_n_pheno_slider_val})")
+        fig_overall_pheno_pie = plot_overall_pathogenic_phenotype_distribution(all_chd_variants_df, top_n=top_n_pheno_slider_val); st.plotly_chart(fig_overall_pheno_pie, use_container_width=True); st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown("##### Pathogenic Variant Type Distribution per Gene (Stacked)")
+        fig_patho_types_stacked = plot_pathogenic_variant_types_per_gene_stacked(all_chd_variants_df); st.plotly_chart(fig_patho_types_stacked, use_container_width=True); st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown(f"##### Heatmap of Pathogenic Variants (Gene vs Top {top_n_pheno_slider_val} ClinVar Phenotypes)")
+        fig_gene_pheno_heatmap = plot_gene_phenotype_heatmap(all_chd_variants_df, top_n_phenotypes=top_n_pheno_slider_val)
+        st.plotly_chart(fig_gene_pheno_heatmap, use_container_width=True)
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown(f"##### Bubble Chart of Pathogenic Variants (Gene vs Top {top_n_pheno_slider_val} ClinVar Phenotypes)")
+        fig_bubble_gene_pheno = plot_pathogenic_bubble_chart_gene_phenotype(all_chd_variants_df, top_n_phenotypes=top_n_pheno_slider_val)
+        st.plotly_chart(fig_bubble_gene_pheno, use_container_width=True)
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown(f"##### Sankey: Pathogenic Variant Types to Top {top_n_pheno_slider_val} ClinVar Phenotypes")
+        fig_sankey_type_pheno = plot_sankey_variant_type_to_phenotype(all_chd_variants_df, top_n_phenotypes=top_n_pheno_slider_val)
+        st.plotly_chart(fig_sankey_type_pheno, use_container_width=True)
+        st.markdown("<br>", unsafe_allow_html=True)
+    else: st.warning("No variant data available across all CHD genes to generate comparative plots.")
+    st.markdown("---"); st.subheader("Further Comparison Ideas:")
+    st.markdown("""*   **Comparative Domain Architecture Plot.**\n*   **Phenotype Similarity/Clustering.**\n*   **Variant Hotspot Comparison.**\n*   **Gene Expression Correlation (External Data).**\n*   **Temporal Analysis** (e.g., variant submission dates, if available).\n*   **Structural Variant Impact.**\n*   **Functional Impact Scores Comparison** (e.g., CADD, SIFT, PolyPhen from external annotations).\n*   **Conservation Analysis.**""")
+
+with main_tab3:
+    st.header(f"{selected_gene} HPO Phenotype Explorer")
+    if df_hpo_phenotypes.empty and df_hpo_diseases.empty and hpo_load_error:
+         st.warning(hpo_load_error) 
+    elif df_hpo_phenotypes.empty and df_hpo_diseases.empty:
+        st.warning(f"No HPO phenotype or disease data could be loaded or found for {selected_gene}. Please ensure '{selected_gene}_annotations.json' exists in '{HPO_FILE_DIR}'.")
+    else:
+        st.info(f"Displaying HPO (Human Phenotype Ontology) annotations for {selected_gene}.")
+        st.markdown("---")
+        
+        hpo_tab1, hpo_tab2, hpo_tab3, hpo_tab4, hpo_tab5 = st.tabs([
+            "Phenotype Overview", 
+            "Disease Associations", 
+            "Phenotype Categories",
+            "Phenotype Wordcloud",
+            "Gene-Phenotype Network"
+        ])
+        
+        with hpo_tab1:
+            st.subheader("Phenotype Overview")
+            
+            if not df_hpo_phenotypes.empty:
+                pheno_count = len(df_hpo_phenotypes['id'].unique()) 
+                st.metric(label=f"Unique HPO Phenotypes for {selected_gene}", value=f"{pheno_count:,}")
+            else:
+                st.metric(label=f"Unique HPO Phenotypes for {selected_gene}", value="0")
+            
+            st.markdown("##### Top HPO Phenotypes")
+            hpo_top_n_slider_overview = st.slider(f"Select Top N HPO Phenotypes to display details:", 5, 50, 15, 1, key="hpo_top_n_slider_overview_tab1")
+            
+            if not df_hpo_phenotypes.empty:
+                top_phenos_df = create_hpo_top_phenotypes_table_df(df_hpo_phenotypes, top_n=hpo_top_n_slider_overview)
+                st.dataframe(top_phenos_df, use_container_width=True, hide_index=True, height=(len(top_phenos_df)+1)*35+3) 
+            else:
+                st.info("No HPO phenotype data to display in table.")
+
+
+        with hpo_tab2:
+            st.subheader("Associated Diseases (from HPO annotations)")
+            if not df_hpo_diseases.empty:
+                disease_count = len(df_hpo_diseases['id'].unique())
+                st.metric(label=f"Unique HPO Disease Associations for {selected_gene}", value=f"{disease_count:,}")
+                
+                st.markdown("##### Disease Details Table")
+                display_disease_df = df_hpo_diseases[['name', 'id', 'mondoId']].copy().drop_duplicates()
+                display_disease_df.rename(columns={'name':'Disease Name', 'id':'HPO Disease ID', 'mondoId': 'Mondo ID'}, inplace=True)
+                if 'Mondo ID' in display_disease_df.columns:
+                    display_disease_df['Mondo Link'] = display_disease_df['Mondo ID'].apply(
+                        lambda x: f"https://monarchinitiative.org/disease/{x}" if pd.notna(x) and x else ""
+                    )
+                    st.dataframe(display_disease_df, use_container_width=True, hide_index=True,
+                                 column_config={
+                                     "Mondo ID": st.column_config.TextColumn("Mondo ID"),
+                                     "Mondo Link": st.column_config.LinkColumn("Link", display_text="🔗 Monarch")
+                                 },
+                                 column_order=["Disease Name", "HPO Disease ID", "Mondo ID", "Mondo Link"]
+                                 )
+                else:
+                    st.dataframe(display_disease_df, use_container_width=True, hide_index=True)
+            else: 
+                st.metric(label=f"Unique HPO Disease Associations for {selected_gene}", value="0")
+                st.info("No specific disease associations found in HPO data for this gene.")
+
+        with hpo_tab3:
+            st.subheader("Phenotype Categories (based on HPO terms)")
+            st.plotly_chart(plot_hpo_phenotype_categories_stacked_bar(df_hpo_phenotypes, selected_gene), use_container_width=True)
+        
+        with hpo_tab4:
+            st.subheader("Phenotype Word Cloud")
+            if not df_hpo_phenotypes.empty:
+                img_path = create_hpo_wordcloud_image(df_hpo_phenotypes, selected_gene)
+                if img_path and os.path.exists(img_path):
+                    st.image(img_path, caption=f"Word Cloud for {selected_gene} HPO Phenotypes", use_container_width=True)
+                elif img_path is None and not df_hpo_phenotypes.empty : st.warning("Could not generate word cloud.")
+                else: st.info("No HPO phenotype names available to generate a word cloud.") 
+            else: st.info("No HPO phenotype data to generate a word cloud.")
+        
+        with hpo_tab5:
+            st.subheader("Gene - HPO Phenotype - Disease Network (Simplified)")
+            net_col1, net_col2 = st.columns(2)
+            with net_col1:
+                net_top_pheno = st.slider("Top N Phenotypes for Network:", 3, 20, 7, key="net_top_pheno")
+            with net_col2:
+                net_top_dis = st.slider("Top N Diseases for Network:", 1, 10, 3, key="net_top_dis")
+            st.plotly_chart(plot_hpo_gene_phenotype_network_plotly(df_hpo_phenotypes, df_hpo_diseases, selected_gene, top_n_pheno=net_top_pheno, top_n_dis=net_top_dis), use_container_width=True)
