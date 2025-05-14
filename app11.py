@@ -582,9 +582,9 @@ def create_binned_stacked_variant_plot(df_positions_filtered, domains_data_local
     plot_title = f"{current_gene_name} ClinVar Variant Overview"
     data_source_annotation = dict(
         text="Data displayed here is from ClinVar's 2025年5月6日 release.",
-        align='left', showarrow=False, xref='paper', yref='paper', x=0.01, 
+        align='center', showarrow=False, xref='paper', yref='paper', x=0.5, 
         y= -0.35 if domains_data_local else -0.25, 
-        font=dict(size=10, color="#555")
+        font=dict(size=15, color="#555")
     )
 
     if df_positions_filtered.empty:
