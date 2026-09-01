@@ -82,6 +82,6 @@ This project is a Streamlit-based interactive dashboard designed to explore and 
 ---
 
 ### 👨‍💻 Developer / 开发人员
-**Zihao Wang (王子豪)**
-Lab Feng, IBS, Fudan University (复旦大学 IBS 丰伟军课题组)
-**Contact:** soap@fastemail.io
+**Soap**
+
+**Contact:** [soap628@proton.me](mailto:soap628@proton.me)
